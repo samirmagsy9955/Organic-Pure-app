@@ -41,7 +41,7 @@
         }
 
         .container {
-            width: 90%;
+            width: 99%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
@@ -205,11 +205,25 @@
             display: flex;
             flex-direction: column;
             height: 100%;
+            position: relative;
         }
 
         .product-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 2;
         }
 
         .product-image {
@@ -220,6 +234,8 @@
             justify-content: center;
             padding: 1rem;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
         .product-image img {
@@ -371,6 +387,7 @@
             color: var(--light);
             padding: 2rem 0;
             text-align: center;
+            position: relative;
         }
 
         .footer-content {
@@ -457,23 +474,221 @@
         }
 		
 		.whatsapp-icon {
-  /* تحديد موضع الأيقونة */
-  position: relative;
-  /* إعطاء الأيقونة حركة */
-  animation: pulse 2s infinite;
-}
+            animation: pulse 2s infinite;
+        }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        /* زر مشاركة التطبيق */
+        .share-app-section {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .share-app-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 35px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .share-app-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* نافذة مشاركة التطبيق */
+        .share-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .share-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .share-modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            transform: translateY(50px);
+            transition: transform 0.4s ease;
+        }
+        
+        .share-modal.active .share-modal-content {
+            transform: translateY(0);
+        }
+        
+        .share-modal-close {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+        
+        .share-modal-title {
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .share-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            direction: ltr;
+        }
+        
+        .share-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            border-radius: 12px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .share-option:hover {
+            background: #e9ecef;
+            transform: translateY(-5px);
+        }
+        
+        .share-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .whatsapp-share {
+            color: #25D366;
+        }
+        
+        .facebook-share {
+            color: #3b5998;
+        }
+        
+        .twitter-share {
+            color: #1DA1F2;
+        }
+        
+        .link-share {
+            color: #6c757d;
+        }
+        
+        .bluetooth-share {
+            color: #0d6efd;
+        }
+        
+        .share-option span {
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+        
+        /* تحسينات تجربة المستخدم */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .scroll-top-btn.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+        
+        /* تحسينات للشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .share-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .scroll-top-btn {
+                bottom: 20px;
+                left: 20px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .share-options {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .share-option {
+                padding: 12px;
+            }
+            
+            .share-icon {
+                font-size: 1.7rem;
+            }
+        }
     </style>
 </head>
 
@@ -482,22 +697,20 @@
     <header>
         <div class="container header-container">
             
-				
             <div class="contact-info">
-                
                 <span> للأستشارات م. باسم منير</span>
-				<a href="tel:01067409639">
-					  <div class="whatsapp-icon">
-                       <i class="fas fa-phone"></i></div> 
+                <a href="tel:01067409639">
+                    <div class="whatsapp-icon">
+                        <i class="fas fa-phone"></i>
+                    </div> 
                     01067409639
                 </a>
             </div>
-			
-			<div class="logo">
+            
+            <div class="logo">
                 <i class="fas fa-leaf"></i>
-				<h1>   Organic Pure  </h1>
+                <h1>   Organic Pure  </h1>
                 <div class="logo-text">
-                
                 </div>
             </div>
         </div>
@@ -555,7 +768,7 @@
                         <span class="product-weight">وزن العبوة: 5 كجم</span>
                         <a href="#" class="order-button" data-product="NPK سماد متوازن">
                              <div class="whatsapp-icon">
-                            <i class="fab fa-whatsapp fa-2x"></i></div>                         </a>
+                            <i class="fab fa-whatsapp fa-2x"></i></div> اطلب الآن                        </a>
                     </div>
                 </div>
             </div>
@@ -595,7 +808,7 @@
                         <span class="product-weight">الوزن: 17 كجم</span>
                         <a href="#" class="order-button" data-product="بلاك ماجيك">
                               <div class="whatsapp-icon">
-                            <i class="fab fa-whatsapp fa-2x"></i></div>                         </a>
+                            <i class="fab fa-whatsapp fa-2x"></i></div> اطلب الآن                        </a>
                     </div>
                 </div>
             </div>
@@ -632,7 +845,7 @@
                         <span class="product-weight">وزن العبوة: 1 كجم</span>
                         <a href="#" class="order-button" data-product="بوت تام">
                              <div class="whatsapp-icon">
-                            <i class="fab fa-whatsapp fa-2x"></i></div>                         </a>
+                            <i class="fab fa-whatsapp fa-2x"></i></div> اطلب الآن                        </a>
                     </div>
                 </div>
             </div>
@@ -673,7 +886,7 @@
                         <span class="product-weight">الوزن الصافى: 17 كجم</span>
                         <a href="#" class="order-button" data-product="جولد توب">
                           <div class="whatsapp-icon">
-                            <i class="fab fa-whatsapp fa-2x"></i></div>  
+                            <i class="fab fa-whatsapp fa-2x"></i></div> اطلب الآن
                         </a>
                     </div>
                 </div>
@@ -715,7 +928,7 @@
                         <span class="product-weight">وزن العبوة: 16 كجم</span>
                         <a href="#" class="order-button" data-product="مكس بيور">
                             <div class="whatsapp-icon">
-                            <i class="fab fa-whatsapp fa-2x"></i></div>  
+                            <i class="fab fa-whatsapp fa-2x"></i></div> اطلب الآن
                         </a>
                     </div>
                 </div>
@@ -754,7 +967,7 @@
                         <span class="product-weight">وزن العبوة: 1 كجم</span>
                         <a href="#" class="order-button" data-product="هيوميك أسيد">
                             <div class="whatsapp-icon">
-                            <i class="fab fa-whatsapp fa-2x"></i></div>  
+                            <i class="fab fa-whatsapp fa-2x"></i></div> اطلب الآن
                         </a>
                     </div>
                 </div>
@@ -767,30 +980,35 @@
         <div class="container contact-content">
             <h2>تواصل معنا اليوم</h2>
             <p>نحن هنا للإجابة على جميع استفساراتكم وتقديم أفضل الحلول الزراعية لاحتياجاتكم</p>
-			
+            
             <a href="https://wa.me/201067409639?text=أرغب%20في%20الاستفسار%20عن%20منتجاتكم" class="whatsapp-button"
                 target="_blank">
                 <i class="fab fa-whatsapp"></i>
                 تواصل عبر واتساب
             </a>
         </div>
-	<p></p>
-		<div class="container header-container">
+        <p></p>
+        <div class="container header-container">
+            <div class="contact-info">
+                <p>المدير العام</p>
+                <h1 > د/سعد اسحق   </h1>
+            </div>
             
             <div class="contact-info">
-                
-                <p>المدير العام</p>
-				<h1 > د/سعد اسحق   </h1>
+                <p>المدير التنفيذى</p>
+                <h1 > د/مريم حنا  </h1>
             </div>
-			
-			<div class="contact-info">
-                
-				<p>المدير التنفيذى</p>
-				<h1 > د/مريم حنا  </h1>
-                
-                </div>
-            </div>
-        
+        </div>
+    </section>
+
+    <!-- قسم مشاركة التطبيق -->
+    <section class="share-app-section">
+        <div class="container">
+            <button class="share-app-btn" id="shareAppBtn">
+                <i class="fas fa-share-alt"></i>
+                مشاركة التطبيق مع الأصدقاء
+            </button>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -801,16 +1019,57 @@
                 <a href="https://wa.me/201129724884" target="_blank">
                     <i class="fas fa-user-tie"></i>
                      م. سمير مجدى
-               <div class="whatsapp-icon">
-  <i class="fab fa-whatsapp fa-2x"></i>
-</div> </a>
-				
+                    <div class="whatsapp-icon">
+                        <i class="fab fa-whatsapp fa-2x"></i>
+                    </div>
+                </a>
             </div>
             <div class="copyright">
                 &copy; 2025 جميع الحقوق محفوظة | الأسمدة والمخصبات الزراعية
             </div>
         </div>
     </footer>
+
+    <!-- نافذة مشاركة التطبيق -->
+    <div class="share-modal" id="shareModal">
+        <div class="share-modal-content">
+            <button class="share-modal-close" id="closeShareModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3 class="share-modal-title">شارك التطبيق مع أصدقائك</h3>
+            <div class="share-options">
+                <div class="share-option whatsapp-share" data-method="whatsapp">
+                    <i class="fab fa-whatsapp share-icon"></i>
+                    <span>واتساب</span>
+                </div>
+                <div class="share-option facebook-share" data-method="facebook">
+                    <i class="fab fa-facebook share-icon"></i>
+                    <span>فيسبوك</span>
+                </div>
+                <div class="share-option twitter-share" data-method="twitter">
+                    <i class="fab fa-twitter share-icon"></i>
+                    <span>تويتر</span>
+                </div>
+                <div class="share-option link-share" data-method="copy">
+                    <i class="fas fa-link share-icon"></i>
+                    <span>نسخ الرابط</span>
+                </div>
+                <div class="share-option bluetooth-share" data-method="bluetooth">
+                    <i class="fas fa-bluetooth share-icon"></i>
+                    <span>بلوتوث</span>
+                </div>
+                <div class="share-option" data-method="more">
+                    <i class="fas fa-ellipsis-h share-icon"></i>
+                    <span>المزيد</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- زر العودة إلى الأعلى -->
+    <button class="scroll-top-btn" id="scrollTopBtn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <!-- jQuery (required for Lightbox2 ) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -856,6 +1115,133 @@
                 'wrapAround': true,
                 'disableScrolling': true
             })
+            
+            // زر العودة إلى الأعلى
+            const scrollTopBtn = document.getElementById('scrollTopBtn');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.classList.add('active');
+                } else {
+                    scrollTopBtn.classList.remove('active');
+                }
+            });
+            
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // مشاركة التطبيق
+            const shareAppBtn = document.getElementById('shareAppBtn');
+            const shareModal = document.getElementById('shareModal');
+            const closeShareModal = document.getElementById('closeShareModal');
+            const shareOptions = document.querySelectorAll('.share-option');
+            const appUrl = 'https://files.appsgeyser.com/Organic%20Pure_19036605.apk';
+            const appTitle = 'تطبيق Organic Pure - أفضل حلول الزراعة';
+            
+            // فتح نافذة المشاركة
+            shareAppBtn.addEventListener('click', () => {
+                shareModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            // إغلاق نافذة المشاركة
+            closeShareModal.addEventListener('click', () => {
+                shareModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            // إغلاق النافذة عند النقر خارجها
+            shareModal.addEventListener('click', (e) => {
+                if (e.target === shareModal) {
+                    shareModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // معالجة خيارات المشاركة
+            shareOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const method = option.getAttribute('data-method');
+                    shareApp(method);
+                });
+            });
+            
+            // وظائف المشاركة
+            function shareApp(method) {
+                const shareUrl = encodeURIComponent(appUrl);
+                const shareText = encodeURIComponent(appTitle);
+                
+                switch(method) {
+                    case 'whatsapp':
+                        window.open(`https://api.whatsapp.com/send?text=${shareText} ${shareUrl}`, '_blank');
+                        break;
+                    case 'facebook':
+                        window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&quote=${shareText}`, '_blank');
+                        break;
+                    case 'twitter':
+                        window.open(`https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`, '_blank');
+                        break;
+                    case 'bluetooth':
+                        if (navigator.bluetooth) {
+                            // محاولة استخدام Web Bluetooth API (قد لا يعمل في جميع المتصفحات)
+                            alert('من فضلك استخدم خاصية المشاركة في جهازك لمشاركة عبر البلوتوث');
+                        } else {
+                            alert('من فضلك استخدم خاصية المشاركة في جهازك لمشاركة عبر البلوتوث');
+                        }
+                        break;
+                    case 'copy':
+                        navigator.clipboard.writeText(appUrl).then(() => {
+                            alert('تم نسخ الرابط إلى الحافظة!');
+                        }).catch(err => {
+                            console.error('Failed to copy: ', err);
+                        });
+                        break;
+                    case 'more':
+                        if (navigator.share) {
+                            navigator.share({
+                                title: appTitle,
+                                text: appTitle,
+                                url: appUrl
+                            }).catch(err => {
+                                console.error('Error sharing:', err);
+                            });
+                        } else {
+                            alert('خاصية المشاركة غير مدعومة في متصفحك. استخدم أحد الخيارات الأخرى.');
+                        }
+                        break;
+                }
+                
+                // إغلاق نافذة المشاركة بعد الاختيار
+                setTimeout(() => {
+                    shareModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }, 500);
+            }
+            
+            // محاولة استخدام واجهة المشاركة الأصلية للجهاز إذا كانت متاحة
+            if (navigator.share) {
+                shareAppBtn.addEventListener('click', (e) => {
+                    // إذا كان المتصفح يدعم المشاركة الأصلية، استخدمها مباشرة
+                    navigator.share({
+                        title: appTitle,
+                        text: appTitle,
+                        url: appUrl
+                    }).catch(err => {
+                        // إذا فشلت المشاركة الأصلية، اعرض نافذة الخيارات
+                        if (err.toString().includes('AbortError') || err.toString().includes('Cancel')) {
+                            return; // المستخدم ألغى المشاركة
+                        }
+                        shareModal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    });
+                    
+                    e.preventDefault();
+                });
+            }
         });
     </script>
 </body>
